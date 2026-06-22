@@ -2,7 +2,7 @@ import * as React from "react";
 import axios from "axios";
 import { useConfig } from "./useConfig";
 
-export function useRavencoinUSD() {
+export function useBaseCurrencyUSD() {
   const [usdRate, setUsdRate] = React.useState<null | number>(null);
   const config = useConfig();
   const tickerUrl = config?.usd_ticker_url || "";

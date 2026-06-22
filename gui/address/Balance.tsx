@@ -3,16 +3,16 @@ import { Spacer } from "@nextui-org/react";
 import { MyCard } from "../MyCard";
 import { IBalanceProps, formatNumber } from "./Address";
 
-export function Balance({ balance, baseCurrency, rvnUsdRate }: IBalanceProps) {
+export function Balance({ balance, baseCurrency, usdRate }: IBalanceProps) {
   const balanceAmount = balance / 100000000;
-  if (rvnUsdRate) {
+  if (usdRate) {
     const base = (
       <MyCard header={baseCurrency} body={formatNumber(balanceAmount)}></MyCard>
     );
     const usd = (
       <MyCard
         header="USD"
-        body={formatNumber(balanceAmount * rvnUsdRate)}
+        body={formatNumber(balanceAmount * usdRate)}
       ></MyCard>
     );
     const tutti = (

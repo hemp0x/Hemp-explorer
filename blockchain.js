@@ -11,26 +11,26 @@ All blockchain operations to into this file
 import getConfig from "./getConfig.js";
 const CONFIG = getConfig();
 const rpc = getRPC(
-  CONFIG.raven_username,
-  CONFIG.raven_password,
-  CONFIG.raven_url
+  CONFIG.rpc_username,
+  CONFIG.rpc_password,
+  CONFIG.rpc_url
 );
 
-Reader.setURL(CONFIG.raven_url);
-Reader.setUsername(CONFIG.raven_username);
-Reader.setPassword(CONFIG.raven_password);
+Reader.setURL(CONFIG.rpc_url);
+Reader.setUsername(CONFIG.rpc_username);
+Reader.setPassword(CONFIG.rpc_password);
 
 const options = {
   auth: {
-    username: CONFIG.raven_username,
-    password: CONFIG.raven_password,
+    username: CONFIG.rpc_username,
+    password: CONFIG.rpc_password,
   },
 };
 export function getAddressUTXOs(address) {
-  //Fetch UTXOs for RVN and for Assets
+  //Fetch UTXOs for the base currency and for assets
 
   const myPromise = new Promise((resolve, reject) => {
-    //GET RVN
+    //base currency
     const p1 = rpc("getaddressutxos", [address]);
     //GET ASSETS
     const p2 = rpc("getaddressutxos", [
@@ -154,7 +154,7 @@ export async function getBlockHashes(start, end) {
     requests.push(data);
   }
 
-  const rpcResponse = await axios.post(CONFIG.raven_url, requests, options);
+  const rpcResponse = await axios.post(CONFIG.rpc_url, requests, options);
 
   const hashes = rpcResponse.data.map((item) => {
     return item.result;
@@ -176,7 +176,7 @@ async function getBlocksByHashes(hashes) {
   });
 
   const blocksResponse = await axios.post(
-    CONFIG.raven_url,
+    CONFIG.rpc_url,
     blocksRequests,
     options
   );
