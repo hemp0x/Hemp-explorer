@@ -1,17 +1,29 @@
 import * as React from "react";
 import axios from "axios";
+import { useConfig } from "./useConfig";
 
 export function useRavencoinUSD() {
   const [usdRate, setUsdRate] = React.useState<null | number>(null);
+  const config = useConfig();
+  const tickerUrl = config?.usd_ticker_url || "";
 
   React.useEffect(() => {
+    if (!tickerUrl) {
+      return;
+    }
     async function work() {
-      const URL = "https://api1.binance.com/api/v3/ticker/price?symbol=RVNUSDT";
-      const response = await axios.get(URL);
-      const value = parseFloat(response.data.price);
-      setUsdRate(value);
+      try {
+        const response = await axios.get(tickerUrl);
+        const value = parseFloat(response.data.price);
+        if (!Number.isNaN(value)) {
+          setUsdRate(value);
+        }
+      } catch (e) {
+        setUsdRate(null);
+      }
     }
     work();
-  });
+  }, [tickerUrl]);
+
   return usdRate;
 }

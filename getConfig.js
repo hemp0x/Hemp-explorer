@@ -1,14 +1,15 @@
 import fs from "fs";
 
 const defaultConfig = {
-  baseCurrency: "RVN",
+  baseCurrency: "HEMP",
   raven_password: "anonymous",
   raven_username: "anonymous",
-  raven_url: "https://rvn-rpc-testnet.ting.finance/rpc",
+  raven_url: "http://127.0.0.1:8766",
   httpPort: 80,
-  headline: "Ravencoin Testnet",
+  headline: "Hemp0x Mainnet",
   theme: "dark",
   ipfs_gateway: "https://cloudflare-ipfs.com/ipfs/",
+  usd_ticker_url: "",
 };
 const PROMPT_USER_TO_UPDATE_MESSAGE =
   "Please update your ./config.json file with your info";
@@ -25,7 +26,7 @@ export default function getConfig() {
 function createConfigIfNeeded() {
   if (fs.existsSync("./config.json") === false) {
     const text = JSON.stringify(defaultConfig, null, 4);
-    fs.writeFileSync("./config.json", text); 
+    fs.writeFileSync("./config.json", text);
   }
 }
 

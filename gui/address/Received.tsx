@@ -9,19 +9,9 @@ export function Received({
   rvnUsdRate,
 }: IReceivedProps) {
   const receivedAmount = Math.abs(received / 100000000);
-  if (baseCurrency !== "RVN" || rvnUsdRate === null) {
-    <MyCard
-      header="Total received"
-      body={
-        <div>
-          {baseCurrency} {formatNumber(receivedAmount)}
-        </div>
-      }
-    />;
-  }
 
   let usdDisplay = <div></div>;
-  if (rvnUsdRate && baseCurrency === "RVN") {
+  if (rvnUsdRate) {
     usdDisplay = (
       <MyCard header={"USD"} body={formatNumber(receivedAmount * rvnUsdRate)} />
     );

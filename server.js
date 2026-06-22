@@ -58,6 +58,7 @@ app.get("/gui-settings", (_, response) => {
     headline: CONFIG.headline,
     theme: CONFIG.theme,
     ipfs_gateway: CONFIG.ipfs_gateway,
+    usd_ticker_url: CONFIG.usd_ticker_url || "",
   });
 });
 app.get("/api/addresses", function (_, response) {

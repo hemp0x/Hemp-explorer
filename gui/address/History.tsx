@@ -2,10 +2,12 @@ import * as React from "react";
 import { Loading, Table } from "@nextui-org/react";
 import { useFetch } from "../useFetch";
 import { getHistory } from "@ravenrebels/ravencoin-history-list";
+import { useConfig } from "../useConfig";
 export function History({ address }: { address: string | null }) {
   const URL = "/api/addressdeltas/" + address;
 
   const _deltas = useFetch(URL);
+  const config = useConfig();
   if (!_deltas) {
     return (
       <div>
@@ -14,7 +16,7 @@ export function History({ address }: { address: string | null }) {
     );
   }
 
-  const history = getHistory(_deltas);
+  const history = getHistory(_deltas, config?.baseCurrency);
 
   //Sort by height
   history.sort((d1: IHeight, d2: IHeight) =>

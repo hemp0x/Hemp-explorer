@@ -5,9 +5,9 @@ import { IBalanceProps, formatNumber } from "./Address";
 
 export function Balance({ balance, baseCurrency, rvnUsdRate }: IBalanceProps) {
   const balanceAmount = balance / 100000000;
-  if (baseCurrency === "RVN" && rvnUsdRate) {
-    const rvn = (
-      <MyCard header="RVN" body={formatNumber(balanceAmount)}></MyCard>
+  if (rvnUsdRate) {
+    const base = (
+      <MyCard header={baseCurrency} body={formatNumber(balanceAmount)}></MyCard>
     );
     const usd = (
       <MyCard
@@ -17,7 +17,7 @@ export function Balance({ balance, baseCurrency, rvnUsdRate }: IBalanceProps) {
     );
     const tutti = (
       <div>
-        {rvn}
+        {base}
         <Spacer />
         {usd}
       </div>
