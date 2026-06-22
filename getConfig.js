@@ -2,9 +2,9 @@ import fs from "fs";
 
 const defaultConfig = {
   baseCurrency: "HEMP",
-  raven_password: "anonymous",
-  raven_username: "anonymous",
-  raven_url: "http://127.0.0.1:8766",
+  rpc_password: "anonymous",
+  rpc_username: "anonymous",
+  rpc_url: "http://127.0.0.1:8766",
   httpPort: 80,
   headline: "Hemp0x Mainnet",
   theme: "dark",
@@ -31,7 +31,7 @@ function createConfigIfNeeded() {
 }
 
 function validateConfig(config) {
-  if (!config.raven_password) {
+  if (!config.rpc_password) {
     throw new Error(PROMPT_USER_TO_UPDATE_MESSAGE);
   }
 }

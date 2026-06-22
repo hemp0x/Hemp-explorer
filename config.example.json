@@ -1,8 +1,8 @@
 {
     "baseCurrency": "HEMP",
-    "raven_username": "REPLACE_WITH_RPC_USER",
-    "raven_password": "REPLACE_WITH_RPC_PASSWORD",
-    "raven_url": "http://127.0.0.1:8766",
+    "rpc_username": "REPLACE_WITH_RPC_USER",
+    "rpc_password": "REPLACE_WITH_RPC_PASSWORD",
+    "rpc_url": "http://127.0.0.1:8766",
     "httpPort": 8080,
     "headline": "Hemp0x Mainnet",
     "theme": "dark",
