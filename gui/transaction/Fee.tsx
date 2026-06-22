@@ -18,7 +18,7 @@ export function Fee({
     usdDisplayValue = "" + fee * rvnUsdRate;
   }
 
-  if (baseCurrency !== "RVN") {
+  if (!rvnUsdRate) {
     return (
       <Table style={{ tableLayout: "fixed" }}>
         <Table.Header>
@@ -31,7 +31,7 @@ export function Fee({
         </Table.Body>
       </Table>
     );
-  } else if (baseCurrency === "RVN") {
+  } else {
     return (
       <Table style={{ tableLayout: "fixed" }}>
         <Table.Header>

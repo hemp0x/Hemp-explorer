@@ -10,6 +10,7 @@ export interface IConfig {
   headline: string
   theme: string
   ipfs_gateway: string
+  usd_ticker_url: string
 }
 
 export function useConfig():IConfig | null {

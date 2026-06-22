@@ -78,8 +78,8 @@ function Footer() {
   return (
     <div>
       <Text size={12}>
-        Rebel Explorer = Software from{" "}
-        <a href="https://twitter.com/RavenRebels">Raven Rebels</a>
+        Hemp0x Explorer · <a href="https://hemp0x.com">hemp0x.com</a> · forked
+        from <a href="https://github.com/ravenrebels/rebel-explorer">Rebel Explorer</a>
       </Text>
     </div>
   );
